@@ -52,7 +52,8 @@
            <version>3.6</version>
      </dependency>
 		
-		<!-- Conector do MySQL --> <dependency> 
+		<!-- Conector do MySQL --> 
+		<dependency> 
 		<groupId>mysql</groupId> 
 		<artifactId>mysql-connector-java</artifactId>
 	    <scope>runtime</scope> 
