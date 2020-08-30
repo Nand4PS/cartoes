@@ -2,7 +2,7 @@ package com.cartoes.api.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+
  
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -47,7 +47,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 	
 	@JsonManagedReference
    	@OneToMany(mappedBy = "cartao", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-   	private List<Transacao> transacoes;
+   
    
 	   	public int getId() {
 	         	return id;
@@ -86,12 +86,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
    	public void setDataAtualizacao(Date dataAtualizacao) {          	
    		this.dataAtualizacao = dataAtualizacao;
 	   	}
-   	    public List<Transacao> getTransacoes(){
-   	    	return transacoes;
-   	    }
-   	 public void setCartoes(List<Transacao> transacoes) {          	
-    		this.transacoes = transacoes;
-    	}
+   	   
  
 	   	public Cliente getCliente() {
 	         	return cliente;
