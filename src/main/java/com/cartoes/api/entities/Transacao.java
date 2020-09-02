@@ -31,7 +31,7 @@ public class Transacao {
 	@Column(name= "valor", nullable = false)
 	private double valor;
 	
-	@Column(name = "qndt_Parcelas", nullable = false)
+	@Column(name = "qdt_Parcelas", nullable = false)
 	private int qdtParcelas;
 	
 	@Column(name= "juros", nullable = false)
@@ -115,7 +115,7 @@ public class Transacao {
                        	+ "cnpj=" + cnpj + ","
                        	+ "valor=" + valor + ","
                        	+ "qdtParcelas=" + qdtParcelas + ","
-                       	+ "Juros=" + juros + "]";
+                       	+ "juros=" + juros + "]";
    	}
 
 

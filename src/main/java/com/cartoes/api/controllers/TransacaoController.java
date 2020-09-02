@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
- 
 
+import com.cartoes.api.dtos.CartaoDto;
+import com.cartoes.api.dtos.TransacaoDto;
 import com.cartoes.api.entities.Transacao;
+import com.cartoes.api.response.Response;
 import com.cartoes.api.services.TransacaoService;
 import com.cartoes.api.utils.ConsistenciaException;
+import com.cartoes.api.utils.ConversaoUtils;
  
 @RestController
 @RequestMapping("/api/Transacao")
@@ -33,22 +36,26 @@ public class TransacaoController {
  
 
    	@GetMapping(value = "/cartao/{cartaoNum}")
-   	public ResponseEntity<List<Transacao>> buscarPorCartaoNum(@PathVariable("cartaoNum") String cartaoNum) {
+   	public ResponseEntity<Response<List<TransacaoDto>>> buscarPorCartaoNum(@PathVariable("cartaoNum") String cartaoNum) {
  
+   		Response<List<TransacaoDto>> response = new Response<List<TransacaoDto>>();
+   		
          	try {
  
-                	log.info("Controller: buscando cartões do cliente de ID: {}", cartaoNum);
+                	log.info("Controller: buscando transações do cartão de numero: {}", cartaoNum);
  
                 	Optional<List<Transacao>> listaTra = transacaoService.buscarPorNumeroCartao(cartaoNum);
- 
-                	return ResponseEntity.ok(listaTra.get());
+                		
+                	response.setDados(ConversaoUtils.ConverterListaTr(listaTra.get()));
+                	
+                	return ResponseEntity.ok(response);
  
          	} catch (ConsistenciaException e) {
                 	log.info("Controller: Inconsistência de dados: {}", e.getMessage());
-                	return ResponseEntity.badRequest().body(new ArrayList<Transacao>());
+                	return ResponseEntity.badRequest().body(response);
          	} catch (Exception e) {
                 	log.error("Controller: Ocorreu um erro na aplicação: {}", e.getMessage());
-                	return ResponseEntity.status(500).body(new ArrayList<Transacao>());
+                	return ResponseEntity.status(500).body(response);
          	}
  
    	}

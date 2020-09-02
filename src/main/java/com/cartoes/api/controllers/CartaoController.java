@@ -41,7 +41,8 @@ public class CartaoController {
      * Retorna os cartões do informado no parâmetro    
      * @param Id do cliente a ser consultado    
      * @return Lista de cartões que o cliente possui    
-     */   @GetMapping(value = "/cliente/{clienteId}")   
+     */  
+   @GetMapping(value = "/cliente/{clienteId}")   
      public ResponseEntity<Response<List<CartaoDto>>> buscarPorClienteId(@PathVariable("clienteId") int clienteId) {
  
          Response<List<CartaoDto>> response = new Response<List<CartaoDto>>();
