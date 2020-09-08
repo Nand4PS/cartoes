@@ -274,7 +274,7 @@ public class TransacaoControllerTest {
 
 		objEntrada.setcnpj("13469758543279");
 		objEntrada.setDataTransacao(new SimpleDateFormat("dd/mm/yyy").parse("01/03/2020"));
-		objEntrada.setjuros(5);
+		objEntrada.setjuros(6);
 		objEntrada.setqdtParcelas(354);
 		objEntrada.setvalor(150.30);
 
