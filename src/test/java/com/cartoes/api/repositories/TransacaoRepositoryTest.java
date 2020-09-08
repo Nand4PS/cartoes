@@ -58,7 +58,7 @@ public class TransacaoRepositoryTest {
 		cartaoTeste.setCliente(clienteTeste);
 		cartaoTeste.setDataAtualizacao(new SimpleDateFormat("dd/mm/yyy").parse("01/02/2020"));
 		cartaoTeste.setDataValidade(new SimpleDateFormat("dd/MM/yyyy").parse("01/02/2028"));
-		cartaoTeste.setNumero("142174269306823");
+		cartaoTeste.setNumero("2541369951357423");
 		
 		
 		tranTeste.setCartao(cartaoTeste);

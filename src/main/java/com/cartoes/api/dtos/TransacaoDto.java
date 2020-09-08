@@ -27,7 +27,7 @@ public class TransacaoDto {
 	private double valor;
 	
 	@NotEmpty(message = "Qntd de Parcelas não pode ser vazio.")
-	@Length(min = 1, max = 2, message = "Qntd de Parcelas deve conter até 2 caracteres numéricos.")
+	@Length(min = 1, max = 2, message = "Qndt de Parcelas deve conter até 2 caracteres numéricos.")
 	private int qdtParcelas;
 	
 	@NotEmpty(message = "Juros não pode ser vazio.")
