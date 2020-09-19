@@ -1,6 +1,7 @@
 package com.cartoes.api.entities;
  
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
  
@@ -35,6 +38,9 @@ public class Usuario implements Serializable {
    	
    	@Column(name = "ativo", nullable = false)
    	private boolean ativo;
+   	
+   	@Column(name = "data_Acesso", nullable = false)    	
+   	private Date dataAcesso;
    	
    	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
    	@JoinTable(name = "Usuario_Regra",
@@ -89,6 +95,24 @@ public class Usuario implements Serializable {
 	public void setRegras(List<Regra> regras) {
       	this.regras = regras;
 	}
+	
+	public Date getDataAcesso() {
+     	return dataAcesso;
+	}
+
+    public void setDataAcesso(Date dataAcesso) {          	
+	this.dataAcesso = dataAcesso;
+	}
+	
+	@PreUpdate
+   	public void preUpdate() {
+         	dataAcesso = new Date();
+   	}
+
+   	@PrePersist
+   	public void prePersist() {
+         	dataAcesso = new Date();
+   	}
 
 	@Override
 	public String toString() {
@@ -96,6 +120,7 @@ public class Usuario implements Serializable {
                    	+ "nome=" + nome + ","
                    	+ "cpf=" + cpf + ","
                    	+ "senha=" + senha + ","
+                   	+ "dataAcesso=" + dataAcesso + ","
                    	+ "ativo=" + ativo + "]";
 	}
 

@@ -80,6 +80,25 @@ public class ConversaoUtils {
      	return lst;
      	
 	}
+	public static Transacao ConverterTr(TransacaoDto transacaoDto) {
+    	 
+     	Transacao Transacao = new Transacao();
+     	
+     	Cartao cart = new Cartao();
+     	
+     	cart.setId(Integer.parseInt(transacaoDto.getCartao()));
+     	
+     	Transacao.setId((transacaoDto.getId()));
+     	Transacao.setcnpj(transacaoDto.getCnpj());
+     	Transacao.setDataTransacao(transacaoDto.getDataTransacao());
+     	Transacao.setjuros(transacaoDto.getjuros());
+     	Transacao.setqdtParcelas(transacaoDto.getqdtParcelas());
+     	Transacao.setvalor(transacaoDto.getvalor());
+     	Transacao.setCartao(cart);
+
+     	return Transacao;
+
+	}
    	
    	public static List<CartaoDto> ConverterLista(List<Cartao> lista){
          	

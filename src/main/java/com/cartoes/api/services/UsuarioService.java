@@ -1,6 +1,7 @@
 package com.cartoes.api.services;
  
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -11,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
  
 import com.cartoes.api.entities.Regra;
@@ -172,7 +174,27 @@ public class UsuarioService {
           	usuarioRepository.alterarSenhaUsuario(SenhaUtils.gerarHash(novaSenha), id);
  
    	}
- 
+   	
+
+   	
+        public void atualizarAcesso(String usuario) {
+   		
+   		Date data = new Date();
+		
+		usuarioRepository.DataAcesso(data, usuario);		
+				
+   	}
+  
+        @Scheduled(fixedRate = 420000)
+        public void Bloqueio() {
+    		
+           usuarioRepository.LoteBloc();    			
+    		
 }
+    			
+    			
+ }
+
+
  
 
